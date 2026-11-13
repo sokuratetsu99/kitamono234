@@ -38,9 +38,6 @@
     min-height: 100%;
     scroll-behavior: smooth;
     width: 100%;
-    margin: 0;
-    padding: 0;
-    min-height: 100%;
   }
 
   body {
@@ -82,6 +79,43 @@
   width: 100%;
 }
 
+.page-loading,
+.page-error,
+.noscript-message {
+  align-items: center;
+  background: var(--paper);
+  color: var(--muted);
+  display: flex;
+  font-family: "Shippori Mincho", serif;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 430px;
+  min-height: 100svh;
+  padding: 32px;
+  text-align: center;
+}
+
+.page-loading p,
+.noscript-message {
+  font-size: 13px;
+  line-height: 2;
+}
+
+.page-error {
+  flex-direction: column;
+  gap: 20px;
+}
+
+.page-error h1 {
+  color: var(--navy);
+  font-size: 22px;
+  margin: 0;
+}
+
+.page-error a {
+  color: var(--navy);
+}
+
 .device-hardware {
   background: var(--paper);
   display: block;
@@ -100,16 +134,12 @@
   align-items: center;
   background: var(--paper);
   display: flex;
-  height: 50px !important;
-  min-height: 50px;
-  max-height: 50px;
-  box-sizing: border-box;
+  height: 40px;
   justify-content: center;
   padding: 0 20px;
   position: sticky;
   top: max(48px, env(safe-area-inset-top, 0px));
   z-index: 90;
-  overflow: hidden;
 }
 
 .brand {
@@ -634,8 +664,6 @@ footer {
   background: var(--navy-dark);
   color: var(--muted);
   padding: 34px 24px 24px;
-  margin-bottom: 0;
-  padding-bottom: 20px;
 }
 
 footer .brand {
@@ -658,8 +686,7 @@ footer > small {
   border-bottom: 1px solid #e7e5df;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  height: 50px;
-  box-sizing: border-box;
+  height: 76px;
   padding: 0 18px;
   position: sticky;
   top: max(48px, env(safe-area-inset-top, 0px));
