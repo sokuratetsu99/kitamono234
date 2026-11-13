@@ -10,21 +10,146 @@
     <meta name="theme-color" content="#fffdf9" />
     <meta name="mobile-web-app-capable" content="yes" />
     <title>ものがたりモノレール｜北九州モノレール13駅の小説</title>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <!-- figma:head-end -->
   </head>
-  <body data-page="app">
+  <body>
     <!-- figma:body-start -->
     <div id="root">
-      <main class="page-loading">
-        <p>ものがたりモノレールを読み込んでいます。</p>
-      </main>
+      <div class="site-shell" id="top">
+        <div class="device-hardware" aria-hidden="true">
+          <span class="device-island"><i></i></span>
+        </div>
+
+        <header class="home-header">
+          <nav class="global-nav" aria-label="グローバルナビ">
+            <a class="brand" href="#top" aria-label="ものがたりモノレール トップへ">
+              <span>
+                <span class="brand-kicker">KITAKYUSHU MONORAIL</span>
+                <span class="brand-name">ものがたりモノレール</span>
+              </span>
+            </a>
+          </nav>
+        </header>
+
+        <main>
+          <section class="hero">
+            <div class="hero-copy">
+              <h1>いつもの駅に、<br /><span>まだ知らない物語。</span></h1>
+              <p class="hero-lead">
+                北九州の街をつなぐ13の駅。<br />ひと駅ずつ、短編小説で旅をしよう。
+              </p>
+            </div>
+          </section>
+
+          <section class="about-section" id="about">
+            <h2>北九州モノレール<br />13駅小説とは</h2>
+            <div class="about-body">
+              <p>
+                この小説サイトは、北九州モノレールと西日本工業大学の学生の取り組みである「北九州モノレールの魅力再発見PR」により開発されました。
+              </p>
+            </div>
+          </section>
+
+          <section class="stations-section" id="stations">
+            <h2>13駅のものがたり</h2>
+            <p class="stations-intro">北から南へ。駅名をタップして、物語の扉を開いてください。</p>
+            <div class="station-list">
+              <a class="station-card" href="./index.html?station=1">
+                <span class="station-card-main">
+                  <span class="station-card-index">01</span><b>小倉駅</b>
+                </span>
+                <em>小倉、始まりの場所</em>
+              </a>
+              <a class="station-card" href="./index.html?station=2">
+                <span class="station-card-main">
+                  <span class="station-card-index">02</span><b>平和通駅</b>
+                </span>
+                <em>平和通りの午後</em>
+              </a>
+              <a class="station-card" href="./index.html?station=3">
+                <span class="station-card-main">
+                  <span class="station-card-index">03</span><b>旦過駅</b>
+                </span>
+                <em>市場の朝、湯気の向こう</em>
+              </a>
+              <a class="station-card" href="./index.html?station=4">
+                <span class="station-card-main">
+                  <span class="station-card-index">04</span><b>香春口三萩野駅</b>
+                </span>
+                <em>長い駅名の短い手紙</em>
+              </a>
+              <a class="station-card" href="./index.html?station=5">
+                <span class="station-card-main">
+                  <span class="station-card-index">05</span><b>片野駅</b>
+                </span>
+                <em>窓辺を走る雲</em>
+              </a>
+              <a class="station-card" href="./index.html?station=6">
+                <span class="station-card-main">
+                  <span class="station-card-index">06</span><b>城野駅</b>
+                </span>
+                <em>午後四時のタイムカプセル</em>
+              </a>
+              <a class="station-card" href="./index.html?station=7">
+                <span class="station-card-main">
+                  <span class="station-card-index">07</span><b>北方駅</b>
+                </span>
+                <em>坂道と赤い自転車</em>
+              </a>
+              <a class="station-card" href="./index.html?station=8">
+                <span class="station-card-main">
+                  <span class="station-card-index">08</span><b>競馬場前駅</b>
+                </span>
+                <em>風の名前を知る日</em>
+              </a>
+              <a class="station-card" href="./index.html?station=9">
+                <span class="station-card-main">
+                  <span class="station-card-index">09</span><b>守恒駅</b>
+                </span>
+                <em>灯りのある窓</em>
+              </a>
+              <a class="station-card" href="./index.html?station=10">
+                <span class="station-card-main">
+                  <span class="station-card-index">10</span><b>徳力公団前駅</b>
+                </span>
+                <em>金木犀の帰り道</em>
+              </a>
+              <a class="station-card" href="./index.html?station=11">
+                <span class="station-card-main">
+                  <span class="station-card-index">11</span><b>徳力嵐山口駅</b>
+                </span>
+                <em>川を渡る声</em>
+              </a>
+              <a class="station-card" href="./index.html?station=12">
+                <span class="station-card-main">
+                  <span class="station-card-index">12</span><b>志井駅</b>
+                </span>
+                <em>星を数える駅</em>
+              </a>
+              <a class="station-card" href="./index.html?station=13">
+                <span class="station-card-main">
+                  <span class="station-card-index">13</span><b>企救丘駅</b>
+                </span>
+                <em>終点から、もう一度</em>
+              </a>
+            </div>
+          </section>
+        </main>
+
+        <footer>
+          <a class="brand" href="#top" aria-label="ものがたりモノレール トップへ">
+            <span>
+              <span class="brand-kicker">KITAKYUSHU MONORAIL</span>
+              <span class="brand-name">ものがたりモノレール</span>
+            </span>
+          </a>
+          <p>北九州モノレールの魅力を、物語とともに。</p>
+          <small>© 2025 MONOGATARI MONORAIL</small>
+        </footer>
+      </div>
     </div>
-    <noscript>
-      <p class="noscript-message">このサイトを表示するにはJavaScriptを有効にしてください。</p>
-    </noscript>
-    <script type="module" src="./main.js"></script>
+    <script type="module" src="js/stories.js"></script>
     <!-- figma:body-end -->
   </body>
 </html>
-
