@@ -143,11 +143,11 @@ const escapeHtml = (value) =>
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 
-function brand() {
+function brand(showKicker = true) {
   return `
     <a class="brand" href="./index.html#top" aria-label="ものがたりモノレール トップへ">
       <span>
-        <span class="brand-kicker">KITAKYUSHU MONORAIL</span>
+        ${showKicker ? '<span class="brand-kicker">KITAKYUSHU MONORAIL</span>' : ""}
         <span class="brand-name">ものがたりモノレール</span>
       </span>
     </a>
@@ -183,7 +183,7 @@ function renderStory(requestedId) {
       ${deviceHardware()}
       <header class="home-header">
         <nav class="global-nav" aria-label="グローバルナビ">
-          ${brand()}
+          ${brand(false)}
         </nav>
       </header>
 
@@ -192,7 +192,6 @@ function renderStory(requestedId) {
           <p class="story-number">STATION STORY ${String(story.id).padStart(2, "0")}</p>
           <p class="story-station">
             <span>${escapeHtml(story.station)}</span>
-            <small>KITAKYUSHU MONORAIL</small>
           </p>
           <h1>${escapeHtml(story.title)}</h1>
         </section>
