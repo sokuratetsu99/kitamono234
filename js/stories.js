@@ -143,14 +143,6 @@ const escapeHtml = (value) =>
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 
-function arrowIcon() {
-  return `
-    <svg class="arrow-icon arrow-back" aria-hidden="true" fill="none" viewBox="0 0 24 24">
-      <path d="M5 12h14M14 7l5 5-5 5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
-    </svg>
-  `;
-}
-
 function brand() {
   return `
     <a class="brand" href="./index.html#top" aria-label="ものがたりモノレール トップへ">
@@ -189,12 +181,10 @@ function renderStory(requestedId) {
   root.innerHTML = `
     <div class="story-shell" id="top">
       ${deviceHardware()}
-      <header class="story-header">
-        <a class="back-link" href="./index.html">
-          ${arrowIcon()}<span>駅一覧</span>
-        </a>
-        ${brand()}
-        <span class="story-progress">${String(story.id).padStart(2, "0")} / 13</span>
+      <header class="home-header">
+        <nav class="global-nav" aria-label="グローバルナビ">
+          ${brand()}
+        </nav>
       </header>
 
       <main>
