@@ -1,17 +1,11 @@
-// 駅順を保ったまま、トップページと小説ページの両方から参照します。
+// 13駅分の小説データ
 const stories = [
   {
     id: 1,
     station: "小倉駅",
     title: "小倉、始まりの場所",
     author: "企画制作チーム",
-    content: `帰省のタイミングで、数年ぶりに実家のある北九州へ戻ってきた。私にとってここは、特別な感慨もない何気ない街だ。どこにでもありそうな、ごく普通の地方都市。
-それでも小倉駅の中は思っていた以上に騒がしく、以前よりもどこか活気があるように見えた。感染症が猛威を振るっていた時期に上京したのだから、賑やかに感じるのは当たり前かもしれない。私はスーツケースを引きながら、モノレールのホームへ続く改札へと足を進めた。
-改札をくぐると、すでに到着していた始発列車が、発車の時を今か今かと待ち構えるように佇んでいる。ふと、別居していた父が昔、嬉しそうにモノレールの話をしてくれたことを思い出していた。
-ホームのベンチに腰を下ろし、駅の自販機で買った紙コップのコーヒーを啜っていると、一人の男性が隣に腰掛けた。
-「……こんにちは。帰省ですか？」
-なぜわかったのだろう。確かに大きめの荷物は持っているが、旅行客に見える可能性だってあるはずだ。私が思わず身構えると、男性は私の不審そうな視線を気にする風もなく、ポツリと語りかけてきた。
-「よければ、少し話を聞いてくれませんか？ 私の、過去と後悔について」`,
+    content: `ここに小倉駅を舞台にした小説の本文を記入します。`,
   },
   {
     id: 2,
@@ -99,4 +93,108 @@ const stories = [
   },
 ];
 
-export default stories;
+const root = document.querySelector("#root");
+
+const escapeHtml = (value) =>
+  String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+
+function arrowIcon() {
+  return `
+    <svg class="arrow-icon arrow-back" aria-hidden="true" fill="none" viewBox="0 0 24 24">
+      <path d="M5 12h14M14 7l5 5-5 5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"></path>
+    </svg>
+  `;
+}
+
+function brand() {
+  return `
+    <a class="brand" href="./index.html#top" aria-label="ものがたりモノレール トップへ">
+      <span>
+        <span class="brand-kicker">KITAKYUSHU MONORAIL</span>
+        <span class="brand-name">ものがたりモノレール</span>
+      </span>
+    </a>
+  `;
+}
+
+function deviceHardware() {
+  return `
+    <div class="device-hardware" aria-hidden="true">
+      <span class="device-island"><i></i></span>
+    </div>
+  `;
+}
+
+function renderStory(requestedId) {
+  const storyIndex = stories.findIndex((story) => story.id === requestedId);
+  if (storyIndex < 0) return;
+
+  const story = stories[storyIndex];
+  const nextStory = stories[(storyIndex + 1) % stories.length];
+  const isLastStory = storyIndex === stories.length - 1;
+  const paragraphs = story.content
+    .split(/\n\s*\n/)
+    .map(
+      (paragraph, index) =>
+        `<p class="${index === 0 ? "drop-cap" : ""}">${escapeHtml(paragraph)}</p>`,
+    )
+    .join("");
+
+  document.title = `${story.station}「${story.title}」｜ものがたりモノレール`;
+  root.innerHTML = `
+    <div class="story-shell" id="top">
+      ${deviceHardware()}
+      <header class="story-header">
+        <a class="back-link" href="./index.html">
+          ${arrowIcon()}<span>駅一覧</span>
+        </a>
+        ${brand()}
+        <span class="story-progress">${String(story.id).padStart(2, "0")} / 13</span>
+      </header>
+
+      <main>
+        <section class="story-title-section">
+          <p class="story-number">STATION STORY ${String(story.id).padStart(2, "0")}</p>
+          <p class="story-station">
+            <span>${escapeHtml(story.station)}</span>
+            <small>KITAKYUSHU MONORAIL</small>
+          </p>
+          <h1>${escapeHtml(story.title)}</h1>
+          <p class="story-author">作　${escapeHtml(story.author)}</p>
+        </section>
+
+        <article class="story-article">
+          <p class="opening-mark">—</p>
+          ${paragraphs}
+          <p class="end-mark">了</p>
+        </article>
+
+        <section class="next-story">
+          <p>${isLastStory ? "BACK TO THE FIRST STORY" : "NEXT STATION STORY"}</p>
+          <a href="./index.html?station=${nextStory.id}">
+            <span class="next-station-main">
+              <span class="next-station-number">${String(nextStory.id).padStart(2, "0")}</span>
+              <b>${escapeHtml(nextStory.station)}</b>
+            </span>
+            <em>${escapeHtml(nextStory.title)}</em>
+          </a>
+        </section>
+      </main>
+
+      <footer class="story-footer">
+        ${brand()}
+        <small>© 2025 MONOGATARI MONORAIL</small>
+      </footer>
+    </div>
+  `;
+}
+
+const requestedStation = Number(new URLSearchParams(window.location.search).get("station"));
+if (stories.some((story) => story.id === requestedStation)) {
+  renderStory(requestedStation);
+}
