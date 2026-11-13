@@ -100,7 +100,9 @@
   align-items: center;
   background: var(--paper);
   display: flex;
-  height: 40px;
+  height: 40px !important;
+  min-height: 40px;
+  box-sizing: border-box;
   justify-content: center;
   padding: 0 20px;
   position: sticky;
