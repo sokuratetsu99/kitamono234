@@ -9,14 +9,22 @@
     />
     <meta name="theme-color" content="#fffdf9" />
     <meta name="mobile-web-app-capable" content="yes" />
-    <title><!-- figma:title --></title>
+    <title>ものがたりモノレール｜北九州モノレール13駅の小説</title>
     <link rel="stylesheet" href="./style.css" />
     <!-- figma:head-end -->
   </head>
-  <body>
+  <body data-page="app">
     <!-- figma:body-start -->
-    <div id="root"></div>
+    <div id="root">
+      <main class="page-loading">
+        <p>ものがたりモノレールを読み込んでいます。</p>
+      </main>
+    </div>
+    <noscript>
+      <p class="noscript-message">このサイトを表示するにはJavaScriptを有効にしてください。</p>
+    </noscript>
     <script type="module" src="./main.js"></script>
     <!-- figma:body-end -->
   </body>
 </html>
+
