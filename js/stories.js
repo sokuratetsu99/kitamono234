@@ -197,7 +197,6 @@ function renderStory(requestedId) {
             <small>KITAKYUSHU MONORAIL</small>
           </p>
           <h1>${escapeHtml(story.title)}</h1>
-          <p class="story-author">作　${escapeHtml(story.author)}</p>
         </section>
 
         <article class="story-article">
