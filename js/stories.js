@@ -144,11 +144,12 @@ const escapeHtml = (value) =>
     .replaceAll("'", "&#039;");
 
 function brand(showKicker = true) {
+  const brandName = showKicker ? "ものがたりモノレール" : "北モノ13駅小説";
   return `
-    <a class="brand" href="./index.html#top" aria-label="ものがたりモノレール トップへ">
+    <a class="brand" href="./index.html#top" aria-label="${brandName} トップへ">
       <span>
         ${showKicker ? '<span class="brand-kicker">KITAKYUSHU MONORAIL</span>' : ""}
-        <span class="brand-name">ものがたりモノレール</span>
+        <span class="brand-name">${brandName}</span>
       </span>
     </a>
   `;
