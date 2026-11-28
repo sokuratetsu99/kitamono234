@@ -9,7 +9,7 @@
     />
     <meta name="theme-color" content="#fffdf9" />
     <meta name="mobile-web-app-capable" content="yes" />
-    <title>北モノ13駅小説</title>
+    <title>ものがたりモノレール｜北九州モノレール13駅の小説</title>
     <link rel="stylesheet" href="css/style.css" />
     <!-- figma:head-end -->
   </head>
@@ -24,29 +24,43 @@
         <header class="home-header">
           <nav class="global-nav" aria-label="グローバルナビ">
             <a class="brand" href="#top" aria-label="北モノ13駅小説 トップへ">
-              <span>
-                <span class="brand-name">北モノ13駅小説</span>
-              </span>
+              <span class="brand-name">北モノ13駅小説</span>
             </a>
           </nav>
         </header>
 
         <main>
           <section class="hero">
-            <div class="hero-copy">
-              <h1>いつもの駅に、<br /><span>まだ知らない物語。</span></h1>
-              <p class="hero-lead">
-                北九州の街をつなぐ13の駅。<br />ひと駅ずつ、短編小説で旅をしよう。
-              </p>
+            <div class="header-scene">
+              <img
+                class="header-station"
+                src="./images/station-header.png"
+                alt="北モノ13駅小説の駅ホーム"
+              />
+              <img
+                class="header-train"
+                src="./images/monorail.png"
+                alt=""
+                aria-hidden="true"
+              />
             </div>
           </section>
 
           <section class="about-section" id="about">
             <h2>北モノ13駅小説とは</h2>
             <div class="about-body">
-              <p>
-                この小説サイトは、北九州モノレールと西日本工業大学の学生の取り組みである「北九州モノレールの魅力再発見PR」により開発されました。
-              </p>
+              <div class="about-city-marquee" aria-hidden="true">
+                <div class="about-city-strip">
+                  <img class="about-city-image" src="./images/about-city.jpg" alt="" />
+                  <img class="about-city-image" src="./images/about-city.jpg" alt="" />
+                </div>
+              </div>
+              <img
+                class="about-train-image"
+                src="./images/about-train.png"
+                alt=""
+                aria-hidden="true"
+              />
             </div>
           </section>
 
@@ -88,7 +102,7 @@
                 <span class="station-card-main">
                   <span class="station-card-index">06</span><b>城野駅</b>
                 </span>
-                <em>妻と娘。</em>
+                <em>娘と妻。</em>
               </a>
               <a class="station-card" href="./index.html?station=7">
                 <span class="station-card-main">
@@ -106,7 +120,7 @@
                 <span class="station-card-main">
                   <span class="station-card-index">09</span><b>守恒駅</b>
                 </span>
-                <em>後悔の中の温かい記憶</em>
+                <em>後悔の中の暖かい記憶</em>
               </a>
               <a class="station-card" href="./index.html?station=10">
                 <span class="station-card-main">
@@ -124,13 +138,13 @@
                 <span class="station-card-main">
                   <span class="station-card-index">12</span><b>志井駅</b>
                 </span>
-                <em>星を数える駅</em>
+                <em>巡ってきたチャンス</em>
               </a>
               <a class="station-card" href="./index.html?station=13">
                 <span class="station-card-main">
                   <span class="station-card-index">13</span><b>企救丘駅</b>
                 </span>
-                <em>終点から、もう一度</em>
+                <em>おかえり。</em>
               </a>
             </div>
           </section>
@@ -145,6 +159,9 @@
           </a>
           <p>北九州モノレールの魅力を、物語とともに。</p>
           <small>© 2025 MONOGATARI MONORAIL</small>
+          <div class="footer-train-track" aria-hidden="true">
+            <img class="footer-train" src="./images/footer-train.png" alt="" />
+          </div>
         </footer>
       </div>
     </div>
