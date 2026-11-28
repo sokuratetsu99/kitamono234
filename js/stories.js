@@ -113,7 +113,7 @@ const stories = [
   {
     id: 9,
     station: "守恒駅",
-    title: "後悔の中の温かい記憶",
+    title: "後悔の中の暖かい記憶",
     content: `「夕飯の時だって、私は……。一日のなかで唯一食卓を囲める夕飯の時だって、職場の飲みを優先して……」
 守恒（もりつね）の駅は、いたって普通の住宅街だ。病院が近いことから小さい時はよく降りていたが、今となってはそこまで降りることがなくなった。
 「会社の飲み会なら、仕方がない気がしますけど……」
@@ -155,14 +155,49 @@ const stories = [
   {
     id: 12,
     station: "志井駅",
-    title: "星を数える駅",
-    content: `ここに志井駅を舞台にした小説の本文を記入します。`,
+    title: "巡ってきたチャンス",
+    content: `「もう、次の駅で終点ですね」
+乗客が少なくなった車内に、彼の声だけがやけに大きく響いた気がした。
+「まさか、終点まで一緒になるとは思ってませんでしたけどね」
+私がそう言うと、彼は少し寂しそうな顔をした。やがて、また一つ、私に話をする。
+「……長々と、過去の情けない話ばかりしてしまいましたね」
+彼は窓の外に流れるその穏やかな家並みを見つめながら、ふと、これまでに見せたことのないほど晴れやかな笑顔を浮かべた。
+「でも、そんな私にも、もう一度だけやり直すチャンスが巡ってきたんです。ここ数年の話ではありますけどね」
+「チャンス……？」
+「ええ。妻と、話す機会ができまして。……妻は、私を、こんな私を、許してくれたんです」
+「……そうでしたか。それは、本当によかったですね」
+お世辞ではなく、心の底からその言葉がこぼれた。彼の過去の過ちも、それでも娘を想い続けてきた時間も、すぐ隣でずっと聞いていたからだ。
+「ええ、本当に……。頭が上がりませんよ。今はまた、あの人の隣で暮らさせてもらっています」
+そう言って照れくさそうに笑う彼の目尻には、深いけれどとても優しい皺が刻まれていた。
+やがてモノレールはゆっくりと志井駅を出発し、「次は、終点、企救丘」というアナウンスが車内に静かに響いた。`,
   },
   {
     id: 13,
     station: "企救丘駅",
-    title: "終点から、もう一度",
-    content: `ここに企救丘駅を舞台にした小説の本文を記入します。`,
+    title: "おかえり。",
+    content: `「……娘さんとは、会えたんですか？」
+企救丘駅に入ろうとするモノレールの車内。とうとう私と彼の2人きりとなって少しした頃、私は気になっていたことを口に出した。
+「……もうかれこれ18年会ってないと、どんな距離で話せばいいか、わからないものですね」
+その言葉に、私はこれまで感じていた違和感の正体をようやく理解した。見ず知らずの私に、彼がなぜこれほどまでに自分の過去や後悔を語り続けたのか――それは、娘と向き合う前にどうしても伝えておきたかった、彼なりの懺悔だったのだ。
+「妻に『小倉駅まで迎えに行ってあげて』と頼まれていたのに、情けないですね。いざ目の前にすると、こんな回りくどい話し方しかできませんでした」
+「……ってことは、」
+私の言葉の続きを遮るように、終点を告げるアナウンスが静かに流れる。
+やがてモノレールは完全に止まり、ホームへと続く扉がゆっくりと開いた。外の柔らかい光と、少しひんやりとした空気が車内に流れ込んでくる。
+「おかえり」
+彼は少し照れくさそうに、けれど驚くほど穏やかに笑った。
+18年分の時間が、開いた扉の向こうへと溶けていく。私はこみ上げるものを必死にこらえながら、目の前にいる父に向かって小さく頷いた。
+「……ただいま！」`,
+  },
+  {
+    id: 14,
+    station: "特別編",
+    title: "そして、ただいま。",
+    content: `家で待っていた母は相変わらず。けれど、少しだけ、前よりも楽しそうだ。
+「おかえり。お父さん、ちゃんと迎えに行ってくれた？」
+そう言いながらエプロン姿で現れた母は、玄関に父と一緒にいる私を見て、
+「ちゃんと一緒に帰れたようでよかった！ お父さんには大学の入学式の時のあなたの写真を渡しておいたから大丈夫だとは思っていたけど、少し不安だったのよね。あなたってば、お父さんの顔、全然覚えてないみたいだったから」
+と言って、安心したようにキッチンに戻っていった。ならば最初から言ってほしかったものだ。そう思いながらムッとして父の方を見ると、父はただ力なく笑っているだけだった。`,
+    bonus: true,
   },
 ];
 
@@ -203,6 +238,32 @@ function renderStory(requestedId) {
   const story = stories[storyIndex];
   const nextStory = stories[(storyIndex + 1) % stories.length];
   const isLastStory = storyIndex === stories.length - 1;
+  const storyLabel = story.bonus
+    ? "BONUS STORY"
+    : `STATION STORY ${String(story.id).padStart(2, "0")}`;
+  const nextStoryLabel = "NEXT STATION STORY";
+  const nextStoryHref = isLastStory ? "./index.html" : `./index.html?station=${nextStory.id}`;
+  const nextStoryCard = isLastStory
+    ? `
+      <span class="next-station-main bonus-story-link">
+        <b>ホームへ戻る</b>
+      </span>
+      <em>13駅のものがたり</em>
+    `
+    : nextStory.bonus
+      ? `
+        <span class="next-station-main bonus-story-link">
+          <b>${escapeHtml(nextStory.title)}</b>
+        </span>
+        <em>企救丘の物語を読んだ方へ</em>
+      `
+    : `
+      <span class="next-station-main">
+        <span class="next-station-number">${String(nextStory.id).padStart(2, "0")}</span>
+        <b>${escapeHtml(nextStory.station)}</b>
+      </span>
+      <em>${escapeHtml(nextStory.title)}</em>
+    `;
   const paragraphs = story.content
     .split(/\n\s*\n/)
     .map(
@@ -223,7 +284,7 @@ function renderStory(requestedId) {
 
       <main>
         <section class="story-title-section">
-          <p class="story-number">STATION STORY ${String(story.id).padStart(2, "0")}</p>
+          <p class="story-number">${storyLabel}</p>
           <p class="story-station">
             <span>${escapeHtml(story.station)}</span>
           </p>
@@ -237,13 +298,9 @@ function renderStory(requestedId) {
         </article>
 
         <section class="next-story">
-          <p>${isLastStory ? "BACK TO THE FIRST STORY" : "NEXT STATION STORY"}</p>
-          <a href="./index.html?station=${nextStory.id}">
-            <span class="next-station-main">
-              <span class="next-station-number">${String(nextStory.id).padStart(2, "0")}</span>
-              <b>${escapeHtml(nextStory.station)}</b>
-            </span>
-            <em>${escapeHtml(nextStory.title)}</em>
+          <p>${nextStoryLabel}</p>
+          <a href="${nextStoryHref}">
+            ${nextStoryCard}
           </a>
         </section>
       </main>
