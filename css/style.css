@@ -1,14 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Shippori+Mincho:wght@500;600;700&display=swap");
 
 :root {
-  --navy: #56757d;
-  --navy-dark: #dce9e6;
-  --cream: #f8f2ed;
-  --paper: #fffdf9;
-  --coral: #d99a8c;
-  --sky: #dcebea;
-  --ink: #526a70;
-  --muted: #87989b;
+  --navy: #a99f8c;
+  --navy-dark: #e9e5de;
+  --cream: #f5f2ed;
+  --paper: #fffdfa;
+  --coral: #c8bdab;
+  --sky: #ece8e1;
+  --ink: #766b57;
+  --muted: #a39a89;
 }
 
 .arrow-icon {
@@ -34,14 +34,14 @@
   }
 
   html {
-    background: #dfe4e2;
+    background: #e7e3dc;
     min-height: 100%;
     scroll-behavior: smooth;
     width: 100%;
   }
 
   body {
-    background: #dfe4e2;
+    background: #e7e3dc;
     color: var(--ink);
     font-family: "Noto Sans JP", sans-serif;
     margin: 0;
@@ -134,12 +134,64 @@
   align-items: center;
   background: var(--paper);
   display: flex;
-  height: 40px;
+  height: 56px;
   justify-content: center;
+  overflow: hidden;
   padding: 0 20px;
   position: sticky;
   top: 44px;
+  width: 100%;
   z-index: 90;
+}
+
+.home-header .brand-name {
+  font-size: 17px;
+}
+
+.header-scene {
+  aspect-ratio: 40 / 39;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.header-station {
+  display: block;
+  height: 100%;
+  object-fit: fill;
+  position: relative;
+  width: 100%;
+  z-index: 0;
+}
+
+.header-train {
+  animation: header-train-pass 12s linear infinite;
+  bottom: 0;
+  display: block;
+  height: 78%;
+  left: 0;
+  max-width: none;
+  position: absolute;
+  transform: translateX(-100%);
+  width: auto;
+  will-change: transform;
+  z-index: 2;
+}
+
+@keyframes header-train-pass {
+  0% {
+    transform: translateX(-100%);
+  }
+  58.333% {
+    left: 100%;
+    transform: translateX(0);
+  }
+  100% {
+    left: 100%;
+    transform: translateX(0);
+  }
 }
 
 .brand {
@@ -183,10 +235,24 @@
 }
 
 .hero {
+  align-items: center;
   background: var(--cream);
+  display: flex;
+  justify-content: center;
+  min-height: min(680px, calc(100dvh - 72px));
   overflow: hidden;
-  padding: 40px 24px 68px;
+  padding: clamp(48px, 10vh, 96px) 0;
   position: relative;
+}
+
+.hero::before {
+  background: url("/images/station-header.png") center / cover no-repeat;
+  content: "";
+  filter: blur(28px);
+  inset: -36px;
+  opacity: 0.3;
+  position: absolute;
+  transform: scale(1.08);
 }
 
 .hero-copy {
@@ -219,7 +285,7 @@
 }
 
 .hero-lead {
-  color: #53666e;
+  color: #7c725f;
   font-family: "Shippori Mincho", serif;
   font-size: 14px;
   line-height: 2;
@@ -262,7 +328,7 @@
 }
 
 .sun-disc {
-  background: #e5a95c;
+  background: #c8b58f;
   border-radius: 50%;
   height: 150px;
   position: absolute;
@@ -281,7 +347,7 @@
 }
 
 .city i {
-  background: #bdc9c5;
+  background: #d2ccc1;
   border-radius: 2px 2px 0 0;
   display: block;
   margin-right: 7px;
@@ -334,7 +400,7 @@
   background: var(--paper);
   border-bottom: 5px solid var(--coral);
   border-radius: 26px 12px 5px 5px;
-  box-shadow: 0 12px 30px rgba(16, 44, 60, 0.15);
+  box-shadow: 0 12px 30px rgba(123, 109, 82, 0.15);
   display: flex;
   gap: 6px;
   height: 64px;
@@ -395,7 +461,7 @@
 }
 
 .hero-orbit {
-  border: 1px solid rgba(16, 44, 60, 0.08);
+  border: 1px solid rgba(123, 109, 82, 0.08);
   border-radius: 50%;
   position: absolute;
 }
@@ -416,13 +482,14 @@
 }
 
 .about-section {
-  background: var(--paper);
+  background: #fcfbf8;
+  min-height: 266px;
   padding: 24px;
   position: relative;
 }
 
 .section-number {
-  color: rgba(16, 44, 60, 0.08);
+  color: rgba(123, 109, 82, 0.08);
   font-family: "Shippori Mincho", serif;
   font-size: 92px;
   font-weight: 700;
@@ -433,7 +500,7 @@
 }
 
 .section-number.light {
-  color: rgba(86, 117, 125, 0.08);
+  color: rgba(123, 109, 82, 0.08);
 }
 .section-label {
   margin-bottom: 22px;
@@ -454,12 +521,22 @@
   position: relative;
 }
 
+.about-section h2 {
+  color: #aaa08c;
+}
+
 .about-body {
-  color: var(--ink);
+  bottom: 0;
+  color: #2c2314;
   font-family: "Shippori Mincho", serif;
   font-size: 14px;
+  height: 181px;
+  left: 0;
   line-height: 2.2;
-  margin-top: 16px;
+  margin: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
 }
 
 .about-body p + p {
@@ -470,6 +547,56 @@
   margin-bottom: 0;
 }
 
+.about-city-marquee {
+  bottom: 8px;
+  height: 125%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  z-index: 0;
+}
+
+.about-city-strip {
+  animation: about-city-pass 24s linear infinite;
+  display: flex;
+  height: 100%;
+  left: 0;
+  position: relative;
+  transform: translateX(-50%);
+  width: max-content;
+  will-change: transform;
+}
+
+.about-city-image {
+  display: block;
+  flex: none;
+  height: 100%;
+  max-width: none;
+  width: auto;
+}
+
+.about-train-image {
+  bottom: 0;
+  display: block;
+  height: 115%;
+  left: 50%;
+  max-width: none;
+  position: absolute;
+  transform: translateX(-50%);
+  width: auto;
+  z-index: 1;
+}
+
+@keyframes about-city-pass {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 .how-to {
   background: var(--cream);
   margin: 55px -24px -88px;
@@ -477,7 +604,7 @@
 }
 
 .how-to-title {
-  border-bottom: 1px solid #cdd1ca;
+  border-bottom: 1px solid #d8d2c8;
   color: var(--navy);
   font-size: 10px;
   font-weight: 700;
@@ -519,7 +646,7 @@
 }
 
 .stations-section {
-  background: #e5efec;
+  background: #eeeae3;
   color: var(--ink);
   padding: 24px 24px 52px;
   position: relative;
@@ -545,7 +672,7 @@
 .station-card {
   align-items: center;
   background: #fcfbf8;
-  border: 1px solid rgba(86, 117, 125, 0.15);
+  border: 1px solid rgba(123, 109, 82, 0.15);
   color: var(--navy);
   display: flex;
   flex-direction: column;
@@ -561,7 +688,7 @@
 }
 
 .station-card:active {
-  background: #cddbd5;
+  background: #ddd7cc;
   transform: scale(0.99);
 }
 
@@ -571,7 +698,7 @@
 }
 
 .station-track::after {
-  background: rgba(86, 117, 125, 0.24);
+  background: rgba(123, 109, 82, 0.24);
   bottom: 0;
   content: "";
   left: 7px;
@@ -588,7 +715,7 @@
 }
 
 .station-dot {
-  background: #e5efec;
+  background: #eeeae3;
   border: 2px solid var(--coral);
   border-radius: 50%;
   height: 15px;
@@ -607,7 +734,7 @@
   transform: scale(1.15);
 }
 .station-index {
-  color: #78909a;
+  color: #918673;
   font-size: 9px;
   font-weight: 700;
 }
@@ -618,18 +745,18 @@
   justify-content: center;
 }
 .station-card-index {
-  color: var(--coral);
+  color: #6b665e;
   font-family: "Shippori Mincho", serif;
   font-size: 14px;
 }
 .station-card-main b {
-  color: var(--navy);
+  color: #6b665e;
   font-family: "Shippori Mincho", serif;
   font-size: 19px;
   letter-spacing: 0.04em;
 }
 .station-card > em {
-  color: #789096;
+  color: #918673;
   display: block;
   font-family: "Shippori Mincho", serif;
   font-size: 11px;
@@ -638,7 +765,7 @@
 }
 .station-arrow {
   align-items: center;
-  border: 1px solid rgba(86, 117, 125, 0.25);
+  border: 1px solid rgba(123, 109, 82, 0.25);
   border-radius: 50%;
   color: var(--coral);
   display: flex;
@@ -663,6 +790,7 @@
 footer {
   background: var(--navy-dark);
   color: var(--muted);
+  overflow: hidden;
   padding: 34px 24px 24px;
 }
 
@@ -679,11 +807,43 @@ footer > small {
   letter-spacing: 0.1em;
 }
 
+.footer-train-track {
+  height: 56px;
+  margin: 26px -24px -24px;
+  overflow: hidden;
+  position: relative;
+  width: calc(100% + 48px);
+}
+
+.footer-train {
+  animation: footer-train-pass 18s linear infinite;
+  bottom: 0;
+  display: block;
+  height: 44px;
+  left: 0;
+  max-width: none;
+  position: absolute;
+  transform: translateX(-100%);
+  width: auto;
+  will-change: transform;
+}
+
+@keyframes footer-train-pass {
+  from {
+    left: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    left: 100%;
+    transform: translateX(0);
+  }
+}
+
 /* Story page */
 .story-header {
   align-items: center;
   background: var(--paper);
-  border-bottom: 1px solid #e7e5df;
+  border-bottom: 1px solid #e8e3db;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   height: 76px;
@@ -726,7 +886,7 @@ footer > small {
 }
 
 .story-route {
-  background: rgba(16, 44, 60, 0.13);
+  background: rgba(123, 109, 82, 0.13);
   height: 1px;
   position: absolute;
   right: 0;
@@ -788,7 +948,7 @@ footer > small {
   position: relative;
 }
 .window-sun {
-  background: #e6aa5e;
+  background: #c8b58f;
   border-radius: 50%;
   height: 100px;
   position: absolute;
@@ -834,7 +994,7 @@ footer > small {
 
 .story-article {
   background: var(--paper);
-  color: #61787d;
+  color: #766b57;
   font-family: "Shippori Mincho", serif;
   font-size: 15px;
   line-height: 2.35;
@@ -872,7 +1032,7 @@ footer > small {
 .next-story > a:first-of-type {
   align-items: center;
   background: #fcfbf8;
-  border: 1px solid rgba(86, 117, 125, 0.15);
+  border: 1px solid rgba(123, 109, 82, 0.15);
   color: var(--navy);
   display: flex;
   flex-direction: column;
@@ -888,7 +1048,7 @@ footer > small {
     transform 0.15s ease;
 }
 .next-story > a:first-of-type:active {
-  background: #cddbd5;
+  background: #ddd7cc;
   transform: scale(0.99);
 }
 .next-station-main {
@@ -898,7 +1058,7 @@ footer > small {
   justify-content: center;
 }
 .next-station-number {
-  color: var(--coral);
+  color: #6b665e;
   font-family: "Shippori Mincho", serif;
   font-size: 14px;
 }
@@ -908,11 +1068,12 @@ footer > small {
   text-decoration: none;
 }
 .next-story a b {
+  color: #6b665e;
   font-family: "Shippori Mincho", serif;
   font-size: 19px;
 }
 .next-story a em {
-  color: #789096;
+  color: #918673;
   font-family: "Shippori Mincho", serif;
   font-size: 11px;
   font-style: normal;
@@ -921,7 +1082,7 @@ footer > small {
 }
 .next-arrow {
   align-items: center;
-  border: 1px solid rgba(86, 117, 125, 0.25);
+  border: 1px solid rgba(123, 109, 82, 0.25);
   border-radius: 50%;
   color: var(--coral);
   display: flex;
@@ -969,6 +1130,7 @@ footer > small {
   .home-header {
     top: min(env(safe-area-inset-top, 0px), 16px);
   }
+
 }
 
 @media (min-width: 500px) {
@@ -982,7 +1144,7 @@ footer > small {
     align-items: center;
     background:
       radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.8), transparent 28%),
-      linear-gradient(145deg, #edf0ed, #cbd3d0);
+      linear-gradient(145deg, #f1eee9, #d5cfc5);
     display: flex;
     justify-content: center;
     padding: 18px;
@@ -1063,5 +1225,19 @@ footer > small {
   *::before,
   *::after {
     transition-duration: 0.01ms !important;
+  }
+
+  .header-train {
+    animation: none;
+    transform: none;
+  }
+
+  .footer-train {
+    animation: none;
+    transform: none;
+  }
+
+  .about-city-strip {
+    animation: none;
   }
 }
